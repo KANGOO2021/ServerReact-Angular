@@ -14,13 +14,16 @@ exports.crearConsulta = async(req, res) => {
         console.log(req.body);
 
         async function main() {
+            const gmail = process.env.GMAIL;
+            const gmailPass = process.env.GMAIL_PASS;
+
             let transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
                 secure: true,
                 auth: {
-                    user: "ser2016munoz@gmail.com",
-                    pass: "mwlsgphiljaccajb",
+                    user: gmail,
+                    pass: gmailPass,
                 }
             });
             let info = await transporter.sendMail({
